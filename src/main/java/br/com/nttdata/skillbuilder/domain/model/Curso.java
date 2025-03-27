@@ -12,6 +12,15 @@ public class Curso {
     private final int metaPontos;
     private final LocalDate dataCriacao;
 
+    public Curso(UUID id, String nome, String descricao, UUID professorId, int metaPontos, LocalDate dataCriacao) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.professorId = professorId;
+        this.metaPontos = metaPontos;
+        this.dataCriacao = dataCriacao;
+    }
+
     public Curso(String nome, String descricao, UUID professorId, int metaPontos) {
         this.id = UUID.randomUUID();
         this.nome = nome;

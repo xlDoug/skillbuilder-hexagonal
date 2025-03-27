@@ -34,6 +34,7 @@ public class AtualizarProgressoUseCaseImpl implements AtualizarProgressoUseCase 
         this.progressoService = progressoService;
     }
 
+
     @Override
     @Transactional
     public Progresso registrarAtividadeConcluida(UUID alunoId, UUID cursoId, UUID atividadeId) {
@@ -42,41 +43,41 @@ public class AtualizarProgressoUseCaseImpl implements AtualizarProgressoUseCase 
         if (progressoOpt.isEmpty()) {
             throw new RegraDeNegocioException("Aluno não está inscrito neste curso");
         }
-        
+
         Progresso progresso = progressoOpt.get();
-        
+
         // Verificar se o curso já foi concluído
         if (progresso.estaConcluido()) {
             throw new RegraDeNegocioException("Curso já foi concluído");
         }
-        
+
         // Verificar se a atividade existe e pertence ao curso
         Optional<Atividade> atividadeOpt = atividadeRepository.buscarPorId(atividadeId);
         if (atividadeOpt.isEmpty()) {
             throw new RegraDeNegocioException("Atividade não encontrada");
         }
-        
+
         Atividade atividade = atividadeOpt.get();
-        
+
         if (!atividade.getCursoId().equals(cursoId)) {
             throw new RegraDeNegocioException("Atividade não pertence a este curso");
         }
-        
+
         // Verificar se a atividade já foi concluída
         if (atividadeConcluidaRepository.verificarConclusao(alunoId, atividadeId)) {
             throw new RegraDeNegocioException("Atividade já foi concluída");
         }
-        
+
         // Registrar conclusão da atividade
         atividadeConcluidaRepository.registrarConclusao(alunoId, cursoId, atividadeId);
-        
+
         // Atualizar progresso
-        progressoService.registrarAtividadeConcluida(progresso, atividade);
+        progresso.acumularPontos(atividade.getPontuacao());
         progresso = progressoRepository.salvar(progresso);
-        
+
         // Verificar se o curso foi concluído
         verificarConclusaoCurso(alunoId, cursoId);
-        
+
         return progresso;
     }
 
@@ -101,7 +102,7 @@ public class AtualizarProgressoUseCaseImpl implements AtualizarProgressoUseCase 
         List<UUID> atividadesConcluidasIds = atividadeConcluidaRepository.buscarAtividadesConcluidasPorUsuarioECurso(alunoId, cursoId);
         
         // Se todas as atividades foram concluídas, marcar curso como concluído
-        if (todasAtividades.size() > 0 && atividadesConcluidasIds.size() >= todasAtividades.size()) {
+        if (!todasAtividades.isEmpty() && atividadesConcluidasIds.size() >= todasAtividades.size()) {
             progresso.concluir();
             progresso = progressoRepository.salvar(progresso);
         }

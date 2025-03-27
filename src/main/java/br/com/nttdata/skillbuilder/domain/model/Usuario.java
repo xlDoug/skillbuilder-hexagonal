@@ -11,6 +11,14 @@ public class Usuario {
     private final TipoUsuario tipo;
     private final LocalDate dataCadastro;
 
+    public Usuario(UUID id, String nome, String email, TipoUsuario tipo, LocalDate dataCadastro) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.tipo = tipo;
+        this.dataCadastro = dataCadastro;
+    }
+
     public Usuario(String nome, String email, TipoUsuario tipo) {
         this.id = UUID.randomUUID();
         this.nome = nome;

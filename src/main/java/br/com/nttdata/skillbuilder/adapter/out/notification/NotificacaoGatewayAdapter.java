@@ -18,10 +18,28 @@ public class NotificacaoGatewayAdapter implements NotificacaoGateway {
 
     @Override
     public void enviarNotificacao(Notificacao notificacao) {
-        // Em um ambiente real, enviaria a notificação por vários canais
+        // Em um ambiente real, enviar por vários canais
         // Aqui, apenas logamos para demonstração
         logger.info("Enviando notificação: [{}] para usuário: {} - Mensagem: {}",
                 notificacao.getTipo(), notificacao.getUsuarioId(), notificacao.getMensagem());
+
+        // Simulação de envio baseado no tipo
+        switch (notificacao.getTipo()) {
+            case NOVO_CURSO:
+                logger.info("Notificação de novo curso enviada ao usuário: {}", notificacao.getUsuarioId());
+                break;
+            case PROGRESSO_ATUALIZADO:
+                logger.info("Notificação de progresso enviada ao usuário: {}", notificacao.getUsuarioId());
+                break;
+            case META_PROFESSOR:
+                logger.info("Notificação de meta atingida enviada ao professor: {}", notificacao.getUsuarioId());
+                break;
+            case RECOMPENSA_RESGATADA:
+                logger.info("Notificação de recompensa resgatada enviada ao usuário: {}", notificacao.getUsuarioId());
+                break;
+            default:
+                logger.info("Notificação de tipo desconhecido enviada");
+        }
     }
 
     @Override

@@ -15,6 +15,16 @@ public class Progresso {
     private LocalDate dataConclusao;
     private int pontosAcumulados;
 
+    public Progresso(UUID id, UUID usuarioId, UUID cursoId, StatusProgresso status, LocalDate dataInicio, LocalDate dataConclusao, int pontosAcumulados) {
+        this.id = id;
+        this.usuarioId = usuarioId;
+        this.cursoId = cursoId;
+        this.status = status;
+        this.dataInicio = dataInicio;
+        this.dataConclusao = dataConclusao;
+        this.pontosAcumulados = pontosAcumulados;
+    }
+
     public Progresso(UUID usuarioId, UUID cursoId) {
         this.id = UUID.randomUUID();
         this.usuarioId = usuarioId;

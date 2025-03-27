@@ -29,6 +29,24 @@ public class RankingRepositoryAdapter implements RankingRepository {
     }
 
     @Override
+    @Transactional
+    public void recalcularRanking() {
+        // Esta implementação é simplificada. Em um sistema real,
+        // você usaria algo como Batch Processing ou ajustes no banco de dados.
+        List<RankingEntity> allRankings = rankingJpaRepository.findAll();
+
+        // Ordena pelo total de pontos (descendente)
+        allRankings.sort((a, b) -> Integer.compare(b.getTotalPontos(), a.getTotalPontos()));
+
+        // Atualiza as posições
+        for (int i = 0; i < allRankings.size(); i++) {
+            RankingEntity ranking = allRankings.get(i);
+            ranking.setPosicaoGlobal(i + 1);
+            rankingJpaRepository.save(ranking);
+        }
+    }
+
+    @Override
     public Ranking salvar(Ranking ranking) {
         RankingEntity entity = new RankingEntity(ranking);
         RankingEntity savedEntity = rankingJpaRepository.save(entity);
@@ -84,21 +102,4 @@ public class RankingRepositoryAdapter implements RankingRepository {
         }
     }
 
-    @Override
-    @Transactional
-    public void recalcularRanking() {
-        // Esta implementação é simplificada. Em um sistema real, 
-        // você usaria algo como Batch Processing ou ajustes no banco de dados.
-        List<RankingEntity> allRankings = rankingJpaRepository.findAll();
-        
-        // Ordena pelo total de pontos (descendente)
-        allRankings.sort((a, b) -> Integer.compare(b.getTotalPontos(), a.getTotalPontos()));
-        
-        // Atualiza as posições
-        for (int i = 0; i < allRankings.size(); i++) {
-            RankingEntity ranking = allRankings.get(i);
-            ranking.setPosicaoGlobal(i + 1);
-            rankingJpaRepository.save(ranking);
-        }
-    }
 }
