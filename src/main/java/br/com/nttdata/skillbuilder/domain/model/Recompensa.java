@@ -13,13 +13,13 @@ public class Recompensa {
     private int quantidadeDisponivel;
     private final LocalDate dataCriacao;
 
-    public Recompensa(String nome, String descricao, int custoPontos, int quantidadeDisponivel) {
-        this.id = UUID.randomUUID();
+    public Recompensa(UUID id, String nome, String descricao, int custoPontos, int quantidadeDisponivel, LocalDate dataCriacao) {
+        this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.custoPontos = custoPontos;
         this.quantidadeDisponivel = quantidadeDisponivel;
-        this.dataCriacao = LocalDate.now();
+        this.dataCriacao = dataCriacao;
     }
 
     public boolean podeResgatar(int pontosDoUsuario) {
