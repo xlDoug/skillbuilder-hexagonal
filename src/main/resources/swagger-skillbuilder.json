@@ -2,174 +2,174 @@
   "openapi": "3.0.1",
   "info": {
     "title": "SkillBuilder API",
-    "description": "Documentação dos endpoints da aplicação SkillBuilder",
+    "description": "Documentação real dos endpoints da aplicação SkillBuilder extraídos dos controllers",
     "version": "1.0.0"
   },
   "paths": {
-    "/atividade": {
-      "get": {
+    "/atividades/cursos/{cursoId}": {
+      "post": {
         "tags": [
           "Atividade"
         ],
-        "summary": "Listar atividade",
-        "description": "Retorna uma lista de atividade disponíveis",
+        "summary": "criarAtividade",
+        "operationId": "criarAtividade",
         "responses": {
           "200": {
-            "description": "Lista retornada com sucesso"
+            "description": "Resposta do método criarAtividade"
           }
         }
       }
     },
-    "/auth": {
-      "get": {
-        "tags": [
-          "Auth"
-        ],
-        "summary": "Listar auth",
-        "description": "Retorna uma lista de auth disponíveis",
-        "responses": {
-          "200": {
-            "description": "Lista retornada com sucesso"
-          }
-        }
-      }
-    },
-    "/curso": {
+    "/cursos/professor": {
       "get": {
         "tags": [
           "Curso"
         ],
-        "summary": "Listar curso",
-        "description": "Retorna uma lista de curso disponíveis",
+        "summary": "listarPorProfessor",
+        "operationId": "listarPorProfessor",
         "responses": {
           "200": {
-            "description": "Lista retornada com sucesso"
+            "description": "Resposta do método listarPorProfessor"
           }
         }
       }
     },
-    "/dashboard": {
-      "get": {
-        "tags": [
-          "Dashboard"
-        ],
-        "summary": "Listar dashboard",
-        "description": "Retorna uma lista de dashboard disponíveis",
-        "responses": {
-          "200": {
-            "description": "Lista retornada com sucesso"
-          }
-        }
-      }
-    },
-    "/notificacao": {
-      "get": {
-        "tags": [
-          "Notificacao"
-        ],
-        "summary": "Listar notificacao",
-        "description": "Retorna uma lista de notificacao disponíveis",
-        "responses": {
-          "200": {
-            "description": "Lista retornada com sucesso"
-          }
-        }
-      }
-    },
-    "/pontuacao": {
-      "get": {
-        "tags": [
-          "Pontuacao"
-        ],
-        "summary": "Listar pontuacao",
-        "description": "Retorna uma lista de pontuacao disponíveis",
-        "responses": {
-          "200": {
-            "description": "Lista retornada com sucesso"
-          }
-        }
-      }
-    },
-    "/professor": {
+    "/professores/perfil": {
       "get": {
         "tags": [
           "Professor"
         ],
-        "summary": "Listar professor",
-        "description": "Retorna uma lista de professor disponíveis",
+        "summary": "obterPerfilProfessor",
+        "operationId": "obterPerfilProfessor",
         "responses": {
           "200": {
-            "description": "Lista retornada com sucesso"
+            "description": "Resposta do método obterPerfilProfessor"
           }
         }
       }
     },
-    "/progresso": {
+    "/progressos/cursos/{cursoId}/inscrever": {
+      "post": {
+        "tags": [
+          "Progresso"
+        ],
+        "summary": "inscreverEmCurso",
+        "operationId": "inscreverEmCurso",
+        "responses": {
+          "200": {
+            "description": "Resposta do método inscreverEmCurso"
+          }
+        }
+      }
+    },
+    "/progressos/cursos/{cursoId}": {
       "get": {
         "tags": [
           "Progresso"
         ],
-        "summary": "Listar progresso",
-        "description": "Retorna uma lista de progresso disponíveis",
+        "summary": "consultarProgressoCurso",
+        "operationId": "consultarProgressoCurso",
         "responses": {
           "200": {
-            "description": "Lista retornada com sucesso"
+            "description": "Resposta do método consultarProgressoCurso"
           }
         }
       }
     },
-    "/ranking": {
+    "/rankings/global": {
       "get": {
         "tags": [
           "Ranking"
         ],
-        "summary": "Listar ranking",
-        "description": "Retorna uma lista de ranking disponíveis",
+        "summary": "listarRankingGlobal",
+        "operationId": "listarRankingGlobal",
         "responses": {
           "200": {
-            "description": "Lista retornada com sucesso"
+            "description": "Resposta do método listarRankingGlobal"
           }
         }
       }
     },
-    "/recompensa": {
+    "/rankings/cursos/{cursoId}": {
       "get": {
         "tags": [
-          "Recompensa"
+          "Ranking"
         ],
-        "summary": "Listar recompensa",
-        "description": "Retorna uma lista de recompensa disponíveis",
+        "summary": "listarRankingPorCurso",
+        "operationId": "listarRankingPorCurso",
         "responses": {
           "200": {
-            "description": "Lista retornada com sucesso"
+            "description": "Resposta do método listarRankingPorCurso"
           }
         }
       }
     },
-    "/relatorio": {
+    "/rankings/posicao": {
+      "get": {
+        "tags": [
+          "Ranking"
+        ],
+        "summary": "obterPosicaoUsuario",
+        "operationId": "obterPosicaoUsuario",
+        "responses": {
+          "200": {
+            "description": "Resposta do método obterPosicaoUsuario"
+          }
+        }
+      }
+    },
+    "/rankings/usuarios/{usuarioId}/posicao": {
+      "get": {
+        "tags": [
+          "Ranking"
+        ],
+        "summary": "obterPosicaoUsuarioPorId",
+        "operationId": "obterPosicaoUsuarioPorId",
+        "responses": {
+          "200": {
+            "description": "Resposta do método obterPosicaoUsuarioPorId"
+          }
+        }
+      }
+    },
+    "/relatorios/alunos/desempenho": {
       "get": {
         "tags": [
           "Relatorio"
         ],
-        "summary": "Listar relatorio",
-        "description": "Retorna uma lista de relatorio disponíveis",
+        "summary": "gerarRelatorioDesempenhoAluno",
+        "operationId": "gerarRelatorioDesempenhoAluno",
         "responses": {
           "200": {
-            "description": "Lista retornada com sucesso"
+            "description": "Resposta do método gerarRelatorioDesempenhoAluno"
           }
         }
       }
     },
-    "/usuario": {
+    "/relatorios/alunos/{alunoId}/desempenho": {
       "get": {
         "tags": [
-          "Usuario"
+          "Relatorio"
         ],
-        "summary": "Listar usuario",
-        "description": "Retorna uma lista de usuario disponíveis",
+        "summary": "gerarRelatorioDesempenhoAlunoById",
+        "operationId": "gerarRelatorioDesempenhoAlunoById",
         "responses": {
           "200": {
-            "description": "Lista retornada com sucesso"
+            "description": "Resposta do método gerarRelatorioDesempenhoAlunoById"
+          }
+        }
+      }
+    },
+    "/relatorios/cursos/{cursoId}": {
+      "get": {
+        "tags": [
+          "Relatorio"
+        ],
+        "summary": "gerarRelatorioCurso",
+        "operationId": "gerarRelatorioCurso",
+        "responses": {
+          "200": {
+            "description": "Resposta do método gerarRelatorioCurso"
           }
         }
       }
@@ -178,51 +178,51 @@
   "tags": [
     {
       "name": "Atividade",
-      "description": "Operações relacionadas a Atividade"
+      "description": "Endpoints do controller AtividadeController"
     },
     {
       "name": "Auth",
-      "description": "Operações relacionadas a Auth"
+      "description": "Endpoints do controller AuthController"
     },
     {
       "name": "Curso",
-      "description": "Operações relacionadas a Curso"
+      "description": "Endpoints do controller CursoController"
     },
     {
       "name": "Dashboard",
-      "description": "Operações relacionadas a Dashboard"
+      "description": "Endpoints do controller DashboardController"
     },
     {
       "name": "Notificacao",
-      "description": "Operações relacionadas a Notificacao"
+      "description": "Endpoints do controller NotificacaoController"
     },
     {
       "name": "Pontuacao",
-      "description": "Operações relacionadas a Pontuacao"
+      "description": "Endpoints do controller PontuacaoController"
     },
     {
       "name": "Professor",
-      "description": "Operações relacionadas a Professor"
+      "description": "Endpoints do controller ProfessorController"
     },
     {
       "name": "Progresso",
-      "description": "Operações relacionadas a Progresso"
+      "description": "Endpoints do controller ProgressoController"
     },
     {
       "name": "Ranking",
-      "description": "Operações relacionadas a Ranking"
+      "description": "Endpoints do controller RankingController"
     },
     {
       "name": "Recompensa",
-      "description": "Operações relacionadas a Recompensa"
+      "description": "Endpoints do controller RecompensaController"
     },
     {
       "name": "Relatorio",
-      "description": "Operações relacionadas a Relatorio"
+      "description": "Endpoints do controller RelatorioController"
     },
     {
       "name": "Usuario",
-      "description": "Operações relacionadas a Usuario"
+      "description": "Endpoints do controller UsuarioController"
     }
   ]
 }
