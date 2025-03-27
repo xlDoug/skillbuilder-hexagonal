@@ -60,4 +60,15 @@ public class PontuacaoService {
     public Pontuacao registrarPontuacaoDestaque(UUID usuarioId) {
         return new Pontuacao(usuarioId, 100, OrigemPontuacao.DESTAQUE_DESEMPENHO);
     }
+
+    // Adicionar ao PontuacaoService.java
+    public int calcularPontuacaoBonus(int pontuacaoBase, boolean concluiuNoTempo) {
+        int bonus = 50; // bônus base por conclusão
+
+        if (concluiuNoTempo) {
+            bonus += 25; // bônus adicional por conclusão no tempo previsto
+        }
+
+        return pontuacaoBase + bonus;
+    }
 }

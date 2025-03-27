@@ -39,8 +39,16 @@ public class Usuario {
         return dataCadastro;
     }
 
-    public boolean ehAluno() { return tipo == TipoUsuario.ALUNO; }
-    public boolean ehProfessor() { return tipo == TipoUsuario.PROFESSOR; }
+    public boolean ehAluno() {
+        return tipo == TipoUsuario.ALUNO;
+    }
 
+    public boolean ehProfessor() {
+        return tipo == TipoUsuario.PROFESSOR;
+    }
+
+    public boolean ehAdmin() {
+        return tipo == TipoUsuario.ADMIN;
+    }
 
 }
