@@ -1,117 +1,131 @@
-# Getting Started
+# NTTSkillBoost 🚀📚
 
-### Reference Documentation
-For further reference, please consider the following sections:
+## Visão Geral
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/3.4.4/maven-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/3.4.4/maven-plugin/build-image.html)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/3.4.4/reference/using/devtools.html)
-* [Spring Web](https://docs.spring.io/spring-boot/3.4.4/reference/web/servlet.html)
-* [Spring Security](https://docs.spring.io/spring-boot/3.4.4/reference/web/spring-security.html)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/3.4.4/reference/data/sql.html#data.sql.jpa-and-spring-data)
-* [Validation](https://docs.spring.io/spring-boot/3.4.4/reference/io/validation.html)
+NTTSkillBoost é uma plataforma inovadora de aprendizado gamificado desenvolvida pela NTT DATA, projetada para transformar a experiência de treinamento interno através de um sistema de pontuação e recompensas.
 
-### Guides
-The following guides illustrate how to use some features concretely:
+## Arquitetura
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [Securing a Web Application](https://spring.io/guides/gs/securing-web/)
-* [Spring Boot and OAuth2](https://spring.io/guides/tutorials/spring-boot-oauth2/)
-* [Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Validation](https://spring.io/guides/gs/validating-form-input/)
+O projeto utiliza a **Arquitetura Hexagonal** (Ports and Adapters), que oferece:
+- Desacoplamento entre regras de negócio e infraestrutura
+- Maior flexibilidade e testabilidade
+- Independência de tecnologias externas
 
-### Maven Parent overrides
+### Microserviços Planejados
 
-Due to Maven's design, elements are inherited from the parent POM to the project POM.
-While most of the inheritance is fine, it also inherits unwanted elements like `<license>` and `<developers>` from the parent.
-To prevent this, the project POM contains empty overrides for these elements.
-If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
+1. **Serviço de Autenticação e Autorização**
+    - Gerencia login, cadastro e controle de acesso
+    - Suporta diferentes tipos de usuário (Aluno, Professor, Admin)
 
+2. **Serviço de Gerenciamento de Cursos**
+    - CRUD de cursos
+    - Atribuição de cursos a professores
+    - Listagem de cursos
 
-````
-src/
-├── domain/
-│   ├── model/
-│   │   ├── Usuario.java
-│   │   ├── Curso.java
-│   │   ├── Atividade.java
-│   │   ├── Progresso.java
-│   │   ├── Pontuacao.java
-│   │   ├── Ranking.java
-│   │   ├── Recompensa.java
-│   │   ├── Notificacao.java
-│   ├── service/
-│   │   ├── SistemaDePontuacao.java
-│   │   ├── GerenciadorDeProgresso.java
-│   │   ├── AvaliadorDeMetas.java
-│   ├── exception/
-│       └── RegrasDeNegocioException.java
-│
-├── application/
-│   ├── port/
-│   │   ├── in/
-│   │   │   ├── LoginUseCase.java
-│   │   │   ├── CadastroUsuarioUseCase.java
-│   │   │   ├── CriarCursoUseCase.java
-│   │   │   ├── InscreverAlunoUseCase.java
-│   │   │   ├── CriarAtividadeUseCase.java
-│   │   │   ├── AtualizarProgressoUseCase.java
-│   │   │   ├── RegistrarPontuacaoUseCase.java
-│   │   │   ├── ResgatarRecompensaUseCase.java
-│   │   │   ├── EnviarNotificacaoUseCase.java
-│   │   │   ├── GerarRelatorioUseCase.java
-│   │   ├── out/
-│   │       ├── UsuarioRepository.java
-│   │       ├── CursoRepository.java
-│   │       ├── AtividadeRepository.java
-│   │       ├── ProgressoRepository.java
-│   │       ├── PontuacaoRepository.java
-│   │       ├── RankingRepository.java
-│   │       ├── RecompensaRepository.java
-│   │       ├── NotificacaoGateway.java
-│   ├── usecase/
-│   │   ├── LoginService.java
-│   │   ├── CadastroUsuarioService.java
-│   │   ├── CriarCursoService.java
-│   │   ├── InscreverAlunoService.java
-│   │   ├── CriarAtividadeService.java
-│   │   ├── AtualizarProgressoService.java
-│   │   ├── RegistrarPontuacaoService.java
-│   │   ├── ResgatarRecompensaService.java
-│   │   ├── EnviarNotificacaoService.java
-│   │   ├── GerarRelatorioService.java
-│   ├── dto/
-│       ├── UsuarioDTO.java
-│       ├── CursoDTO.java
-│       ├── ProgressoDTO.java
-│       └── ...
-│
-├── adapters/
-│   ├── in/
-│   │   ├── rest/
-│   │   │   ├── AuthController.java
-│   │   │   ├── CursoController.java
-│   │   │   ├── ProgressoController.java
-│   │   ├── messaging/
-│   │       ├── GamificacaoListener.java
-│   │
-│   ├── out/
-│   │   ├── persistence/
-│   │   │   ├── UsuarioRepositoryImpl.java
-│   │   │   ├── CursoRepositoryImpl.java
-│   │   │   ├── RecompensaRepositoryImpl.java
-│   │   ├── external/
-│   │       ├── NotificacaoGatewayImpl.java
-│   │       ├── JWTAuthProvider.java
-│
-├── config/
-│   ├── SecurityConfig.java
-│   ├── SwaggerConfig.java
-│   ├── PersistenceConfig.java
-│
-└── main/
-└── App.java
+3. **Serviço de Gerenciamento de Atividades**
+    - Criação de atividades (vídeos, quizzes, tarefas)
+    - Atribuição de pontuações
+    - Acompanhamento de progresso
+
+4. **Serviço de Progresso**
+    - Rastreamento do progresso do aluno
+    - Atualização de status de conclusão
+    - Cálculo de pontuações
+
+5. **Serviço de Gamificação**
+    - Gerenciamento de pontos
+    - Geração de rankings
+    - Acompanhamento de metas
+
+6. **Serviço de Loja de Recompensas** (Futuro)
+    - Gestão de recompensas
+    - Resgate de prêmios
+    - Controle de disponibilidade
+
+## Tecnologias Utilizadas
+
+- **Backend**: Java 17 com Spring Boot 3
+- **Banco de Dados**:
+    - PostgreSQL
+    - MongoDB (para progresso)
+    - Redis (para rankings em tempo real)
+- **Autenticação**: JWT com Spring Security
+- **Documentação**: Springdoc OpenAPI (Swagger)
+- **Infraestrutura**: AWS (Fargate, RDS, S3)
+- **Mensageria**: Amazon SQS/SNS
+- **Orquestração**: Docker, GitHub Actions
+
+## Funcionalidades Principais
+
+### Para Alunos
+- Cadastro e Login
+- Visualização de cursos disponíveis
+- Inscrição em cursos
+- Sistema de pontuação baseado em:
+    - Conclusão de aulas
+    - Participação em quizzes
+    - Desempenho destacado
+
+### Para Professores
+- Criação e gerenciamento de cursos
+- Acompanhamento do progresso dos alunos
+- Sistema de metas com pontuação
+
+### Para Administradores
+- Aprovação de professores
+- Gerenciamento de recompensas
+- Geração de relatórios e estatísticas
+
+## Conceitos de Domínio
+
+### Modelos Principais
+- **Usuário**: Representa alunos, professores e admins
+- **Curso**: Contém informações sobre cursos e metas
+- **Atividade**: Diferentes tipos de tarefas de aprendizado
+- **Progresso**: Rastreia o andamento do aluno
+- **Pontuação**: Registra pontos obtidos
+- **Ranking**: Mantém posição global do usuário
+- **Recompensa**: Prêmios resgatáveis por pontos
+
+### Regras de Negócio
+- Pontuação dinâmica por tipo de atividade
+- Bônus por conclusão de curso
+- Restrições de resgate baseadas em pontos
+- Validações de permissão por tipo de usuário
+
+## Configuração e Instalação
+
+### Pré-requisitos
+- Java 17
+- Docker
+- Maven
+- AWS CLI (para deploy)
+
+### Passos de Instalação
+1. Clonar o repositório
+2. Configurar variáveis de ambiente
+3. Executar `mvn clean install`
+4. Iniciar com `java -jar target/skillbuilder.jar`
+
+## Executando Testes
+- Testes unitários: `mvn test`
+- Cobertura de código: `mvn jacoco:report`
+
+## Contribuição
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature
+3. Commit suas mudanças
+4. Abra um Pull Request
+
+## Próximos Passos
+- Implementação completa de microserviços
+- Integração com sistemas de autenticação corporativos
+- Desenvolvimento do frontend
+- Expansão do sistema de recompensas
+
+## Licença
+[Inserir detalhes da licença]
+
+## Contato
+NTT DATA Brasil
+E-mail: [contato]
