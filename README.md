@@ -93,6 +93,47 @@ O projeto utiliza a **Arquitetura Hexagonal** (Ports and Adapters), que oferece:
 - Restrições de resgate baseadas em pontos
 - Validações de permissão por tipo de usuário
 
+
+## 📁 Estrutura do Projeto
+
+A seguir está a estrutura real de diretórios da aplicação, baseada na organização por camadas e padrões da Arquitetura Hexagonal:
+
+```
+skillbuilder/
+├── mvnw
+├── pom.xml
+├── README.md
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── br
+│   │   │       └── com
+│   │   │           └── nttdata
+│   │   │               └── skillbuilder
+│   │   │                   ├── HexagonalApplication.java
+│   │   │                   ├── adapter
+│   │   │                   │   ├── in
+│   │   │                   │   │   └── web               # Controllers (entrada HTTP)
+│   │   │                   │   └── out
+│   │   │                   │       └── persistence       # Repositórios e integração com banco
+│   │   │                   ├── application
+│   │   │                   │   ├── dto                   # DTOs da aplicação
+│   │   │                   │   ├── port                  # Interfaces (UseCases)
+│   │   │                   │   └── service               # Implementações de UseCases
+│   │   │                   └── domain
+│   │   │                       └── model                 # Entidades de domínio
+│   │   └── resources
+│   │       ├── application.properties
+│   │       └── static
+│   └── test
+│       └── java
+│           └── br.com.nttdata.skillbuilder
+└── target
+```
+
+Essa estrutura reflete uma separação clara entre **entrada (web/controllers)**, **aplicação (casos de uso)**, **domínio (modelo)** e **infraestrutura externa (persistence/notification)**.
+
+
 ## Configuração e Instalação
 
 ### Pré-requisitos

@@ -1,0 +1,228 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "SkillBuilder API",
+    "description": "Documentação dos endpoints da aplicação SkillBuilder",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/atividade": {
+      "get": {
+        "tags": [
+          "Atividade"
+        ],
+        "summary": "Listar atividade",
+        "description": "Retorna uma lista de atividade disponíveis",
+        "responses": {
+          "200": {
+            "description": "Lista retornada com sucesso"
+          }
+        }
+      }
+    },
+    "/auth": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Listar auth",
+        "description": "Retorna uma lista de auth disponíveis",
+        "responses": {
+          "200": {
+            "description": "Lista retornada com sucesso"
+          }
+        }
+      }
+    },
+    "/curso": {
+      "get": {
+        "tags": [
+          "Curso"
+        ],
+        "summary": "Listar curso",
+        "description": "Retorna uma lista de curso disponíveis",
+        "responses": {
+          "200": {
+            "description": "Lista retornada com sucesso"
+          }
+        }
+      }
+    },
+    "/dashboard": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "summary": "Listar dashboard",
+        "description": "Retorna uma lista de dashboard disponíveis",
+        "responses": {
+          "200": {
+            "description": "Lista retornada com sucesso"
+          }
+        }
+      }
+    },
+    "/notificacao": {
+      "get": {
+        "tags": [
+          "Notificacao"
+        ],
+        "summary": "Listar notificacao",
+        "description": "Retorna uma lista de notificacao disponíveis",
+        "responses": {
+          "200": {
+            "description": "Lista retornada com sucesso"
+          }
+        }
+      }
+    },
+    "/pontuacao": {
+      "get": {
+        "tags": [
+          "Pontuacao"
+        ],
+        "summary": "Listar pontuacao",
+        "description": "Retorna uma lista de pontuacao disponíveis",
+        "responses": {
+          "200": {
+            "description": "Lista retornada com sucesso"
+          }
+        }
+      }
+    },
+    "/professor": {
+      "get": {
+        "tags": [
+          "Professor"
+        ],
+        "summary": "Listar professor",
+        "description": "Retorna uma lista de professor disponíveis",
+        "responses": {
+          "200": {
+            "description": "Lista retornada com sucesso"
+          }
+        }
+      }
+    },
+    "/progresso": {
+      "get": {
+        "tags": [
+          "Progresso"
+        ],
+        "summary": "Listar progresso",
+        "description": "Retorna uma lista de progresso disponíveis",
+        "responses": {
+          "200": {
+            "description": "Lista retornada com sucesso"
+          }
+        }
+      }
+    },
+    "/ranking": {
+      "get": {
+        "tags": [
+          "Ranking"
+        ],
+        "summary": "Listar ranking",
+        "description": "Retorna uma lista de ranking disponíveis",
+        "responses": {
+          "200": {
+            "description": "Lista retornada com sucesso"
+          }
+        }
+      }
+    },
+    "/recompensa": {
+      "get": {
+        "tags": [
+          "Recompensa"
+        ],
+        "summary": "Listar recompensa",
+        "description": "Retorna uma lista de recompensa disponíveis",
+        "responses": {
+          "200": {
+            "description": "Lista retornada com sucesso"
+          }
+        }
+      }
+    },
+    "/relatorio": {
+      "get": {
+        "tags": [
+          "Relatorio"
+        ],
+        "summary": "Listar relatorio",
+        "description": "Retorna uma lista de relatorio disponíveis",
+        "responses": {
+          "200": {
+            "description": "Lista retornada com sucesso"
+          }
+        }
+      }
+    },
+    "/usuario": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "summary": "Listar usuario",
+        "description": "Retorna uma lista de usuario disponíveis",
+        "responses": {
+          "200": {
+            "description": "Lista retornada com sucesso"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Atividade",
+      "description": "Operações relacionadas a Atividade"
+    },
+    {
+      "name": "Auth",
+      "description": "Operações relacionadas a Auth"
+    },
+    {
+      "name": "Curso",
+      "description": "Operações relacionadas a Curso"
+    },
+    {
+      "name": "Dashboard",
+      "description": "Operações relacionadas a Dashboard"
+    },
+    {
+      "name": "Notificacao",
+      "description": "Operações relacionadas a Notificacao"
+    },
+    {
+      "name": "Pontuacao",
+      "description": "Operações relacionadas a Pontuacao"
+    },
+    {
+      "name": "Professor",
+      "description": "Operações relacionadas a Professor"
+    },
+    {
+      "name": "Progresso",
+      "description": "Operações relacionadas a Progresso"
+    },
+    {
+      "name": "Ranking",
+      "description": "Operações relacionadas a Ranking"
+    },
+    {
+      "name": "Recompensa",
+      "description": "Operações relacionadas a Recompensa"
+    },
+    {
+      "name": "Relatorio",
+      "description": "Operações relacionadas a Relatorio"
+    },
+    {
+      "name": "Usuario",
+      "description": "Operações relacionadas a Usuario"
+    }
+  ]
+}
