@@ -46,14 +46,9 @@ O projeto utiliza a **Arquitetura Hexagonal** (Ports and Adapters), que oferece:
 
 - **Backend**: Java 17 com Spring Boot 3
 - **Banco de Dados**:
-    - PostgreSQL
-    - MongoDB (para progresso)
-    - Redis (para rankings em tempo real)
+    - H2
 - **Autenticação**: JWT com Spring Security
 - **Documentação**: Springdoc OpenAPI (Swagger)
-- **Infraestrutura**: AWS (Fargate, RDS, S3)
-- **Mensageria**: Amazon SQS/SNS
-- **Orquestração**: Docker, GitHub Actions
 
 ## Funcionalidades Principais
 
@@ -92,7 +87,6 @@ O projeto utiliza a **Arquitetura Hexagonal** (Ports and Adapters), que oferece:
 - Bônus por conclusão de curso
 - Restrições de resgate baseadas em pontos
 - Validações de permissão por tipo de usuário
-
 
 ## 📁 Estrutura do Projeto
 
@@ -163,10 +157,3 @@ Essa estrutura reflete uma separação clara entre **entrada (web/controllers)**
 - Integração com sistemas de autenticação corporativos
 - Desenvolvimento do frontend
 - Expansão do sistema de recompensas
-
-## Licença
-[Inserir detalhes da licença]
-
-## Contato
-NTT DATA Brasil
-E-mail: [contato]
