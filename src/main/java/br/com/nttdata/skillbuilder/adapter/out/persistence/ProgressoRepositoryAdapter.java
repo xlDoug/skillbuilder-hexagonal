@@ -65,6 +65,7 @@ public class ProgressoRepositoryAdapter implements ProgressoRepository {
 
     @Override
     public int contarConcluidosPorCurso(UUID cursoId) {
-        return progressoJpaRepository.countConcluidosByCursoId(cursoId.toString());
+        return progressoJpaRepository.countByStatusAndCursoId(
+                StatusProgresso.CONCLUIDO, cursoId.toString());
     }
 }

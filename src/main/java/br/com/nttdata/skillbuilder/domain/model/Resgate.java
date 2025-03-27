@@ -17,6 +17,13 @@ public class Resgate {
         this.dataResgate = LocalDate.now();
     }
 
+    public Resgate(UUID id, UUID usuarioId, UUID recompensaId, LocalDate dataResgate) {
+        this.id = id;
+        this.usuarioId = usuarioId;
+        this.recompensaId = recompensaId;
+        this.dataResgate = dataResgate;
+    }
+
     public UUID getId() {
         return id;
     }

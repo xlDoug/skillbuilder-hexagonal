@@ -37,12 +37,12 @@ public class RankingEntity {
         this.dataAtualizacao = ranking.getDataAtualizacao();
     }
 
+    // Correção:
     public Ranking toDomainModel() {
         return new Ranking(
                 UUID.fromString(usuarioId),
                 posicaoGlobal,
-                totalPontos,
-                dataAtualizacao
+                totalPontos
         );
     }
 

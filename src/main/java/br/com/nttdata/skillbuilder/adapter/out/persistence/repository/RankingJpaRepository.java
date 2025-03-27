@@ -18,4 +18,5 @@ public interface RankingJpaRepository extends JpaRepository<RankingEntity, Strin
     
     @Query("SELECT COUNT(r) + 1 FROM RankingEntity r WHERE r.totalPontos > (SELECT r2.totalPontos FROM RankingEntity r2 WHERE r2.usuarioId = :usuarioId)")
     int findPosicaoByUsuarioId(@Param("usuarioId") String usuarioId);
+
 }

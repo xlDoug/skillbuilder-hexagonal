@@ -16,6 +16,13 @@ public class InformacaoProfessor {
         this.dataCriacao = LocalDate.now();
     }
 
+    public InformacaoProfessor(UUID usuarioId, String descricao, int metaPontos, LocalDate dataCriacao) {
+        this.usuarioId = usuarioId;
+        this.descricao = descricao;
+        this.metaPontos = metaPontos;
+        this.dataCriacao = dataCriacao;
+    }
+
     public UUID getUsuarioId() {
         return usuarioId;
     }

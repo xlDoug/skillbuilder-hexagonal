@@ -21,6 +21,15 @@ public class Notificacao {
         this.dataEnvio = LocalDateTime.now();
     }
 
+    public Notificacao(UUID id, UUID usuarioId, String mensagem, TipoNotificacao tipo, StatusNotificacao status, LocalDateTime dataEnvio) {
+        this.id = id;
+        this.usuarioId = usuarioId;
+        this.mensagem = mensagem;
+        this.tipo = tipo;
+        this.status = status;
+        this.dataEnvio = dataEnvio;
+    }
+
     public void marcarComoLida() {
         this.status = StatusNotificacao.LIDA;
     }

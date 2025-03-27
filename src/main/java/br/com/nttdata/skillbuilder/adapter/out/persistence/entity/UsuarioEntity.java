@@ -38,7 +38,11 @@ public class UsuarioEntity {
     }
 
     public UsuarioEntity(Usuario usuario) {
-        this.id = usuario.getId().toString();
+        if (usuario.getId() != null) {
+            this.id = usuario.getId().toString();
+        } else {
+            this.id = UUID.randomUUID().toString();
+        }
         this.nome = usuario.getNome();
         this.email = usuario.getEmail();
         this.tipo = usuario.getTipo();

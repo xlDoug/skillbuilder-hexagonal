@@ -23,4 +23,7 @@ public interface ProgressoJpaRepository extends JpaRepository<ProgressoEntity, S
     
     @Query("SELECT COUNT(p) FROM ProgressoEntity p WHERE p.cursoId = :cursoId AND p.status = 'CONCLUIDO'")
     int countConcluidosByCursoId(@Param("cursoId") String cursoId);
+
+    int countByStatusAndCursoId(StatusProgresso status, String cursoId);
+
 }

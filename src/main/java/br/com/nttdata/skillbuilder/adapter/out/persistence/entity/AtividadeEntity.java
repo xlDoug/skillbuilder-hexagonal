@@ -51,7 +51,7 @@ public class AtividadeEntity {
 
     public Atividade toDomainModel() {
         return new Atividade(
-                UUID.fromString(id),
+                //UUID.fromString(id),
                 UUID.fromString(cursoId),
                 tipoAtividade,
                 descricao,
